@@ -1,3 +1,3 @@
 package constanta
 
-const TimeLayoutDefault = "2006-01-02T15:04:05.000000Z"
+const TimeLayoutDefault = "2024-02-07T15:46:05.000000Z"
