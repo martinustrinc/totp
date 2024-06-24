@@ -1,8 +1,6 @@
 package services
 
 import (
-	"fmt"
-	"strings"
 	"time"
 	"totp-learn/model"
 	"totp-learn/util"
@@ -24,21 +22,21 @@ func GenerateTOTP(dataEncryption string, secretKey string) (result string, timeG
 	//encode data bundle into string
 	//dataInput, err := util.DecodeSHA256(dataEncryption)
 	//dataString := util.ByteArrayToString(dataInput)
-	dataString := dataEncryption
-	dataSplit := strings.Split(dataString, "_")
+	//dataString := dataEncryption
+	//dataSplit := strings.Split(dataString, "_")
 	dataRequest := dataBundle.DataDetail
-	if len(dataSplit) < 2 {
-		fmt.Println("Error length")
-		return
-	}
-	if len(dataSplit) > 3 {
-		dataRequest.ClientID = dataSplit[0]
-		dataRequest.HwID = dataSplit[1]
-		//dataRequest.TimestampStr = dataSplit[2]
-		dataRequest.TimestampStr = time.Now().String()
-		dataRequest.Timestamp = time.Now()
-		dataRequest.Type = dataSplit[3]
-	}
+	//if len(dataSplit) < 2 {
+	//	fmt.Println("Error length")
+	//	return
+	//}
+	//if len(dataSplit) > 3 {
+	//	dataRequest.ClientID = dataSplit[0]
+	//	dataRequest.HwID = dataSplit[1]
+	//dataRequest.TimestampStr = dataSplit[2]
+	//dataRequest.TimestampStr = time.Now().String()
+	dataRequest.Timestamp = time.Now()
+	//dataRequest.Type = dataSplit[3]
+	//}
 	//dataRequest.Timestamp, err = util.TimeParse(timeLayout, dataRequest.TimestampStr)
 	//if err != nil {
 	//	fmt.Println("Error Parsing")

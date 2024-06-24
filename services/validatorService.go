@@ -2,7 +2,6 @@ package services
 
 import (
 	"errors"
-	"fmt"
 	"time"
 	"totp-learn/model"
 	"totp-learn/util"
@@ -13,8 +12,8 @@ func ValidateTOTP(inputOtp string, timeOtp time.Time, secretKey string) (result 
 	var dataBundle dtoModel.RequestDataBundleOtp
 	//fmt.Println("Length OTP : ", len(inputOtp))
 	if len(inputOtp) < 6 {
-		fmt.Println("OTP must be 6 characters")
-		return result, errors.New("input must be 6 characters")
+		//fmt.Println("Input OTP must be 6 characters!")
+		return result, errors.New("input OTP must be 6 characters")
 	}
 
 	//format data bundle (dataRequest.ClientID + "_" + dataRequest.HwID + "_" + dataRequest.TimestampStr + "_" + dataRequest.Type)
@@ -58,9 +57,9 @@ func ValidateTOTP(inputOtp string, timeOtp time.Time, secretKey string) (result 
 	//fmt.Println("Time Generate Unix Milli : ", dataRequest.Timestamp.UnixMilli())
 	//fmt.Println("Time Validate : ", timeOtp)
 	//fmt.Println("Time Validate Unix Milli : ", timeOtp.UnixMilli())
-	if timeOtp.UnixMilli()-dataRequest.Timestamp.UnixMilli() <= 0 {
-		result = "Failed Validate OTP, OTP Expired"
-	}
+	//if timeOtp.UnixMilli()-dataRequest.Timestamp.UnixMilli() <= 0 {
+	//	result = "Failed Validate OTP, OTP Expired"
+	//}
 
 	//if needed to response JSON
 	//resp, err := json.Marshal(result)
